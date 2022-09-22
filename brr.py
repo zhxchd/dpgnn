@@ -4,8 +4,8 @@ from torch_sparse import SparseTensor
 
 class BRR():
     def __init__(self, eps, num_nodes, edge_index):
-        self.device = torch.device(
-            "cuda:0" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        # self.device = torch.device("cpu")
         self.p = 1.0/(1.0 + torch.exp(torch.tensor(eps)).to(self.device))
         self.n = num_nodes
         self.adj = SparseTensor(
@@ -17,7 +17,7 @@ class BRR():
 
     def __rr(self):
         # return 1 with probability p, but does not flip diagonal edges since no self loop allowed
-        return ((self.adj + torch.bernoulli(torch.full((self.n, self.n), self.p).to(self.device))) % 2) * (1 - torch.eye(self.n, self.n).to(self.device))
+        return ((self.adj + torch.bernoulli(torch.full((self.n, self.n), self.p)).to(self.device)) % 2) * (1 - torch.eye(self.n, self.n)).to(self.device)
 
     def __get_pij_2d(self, noisy_adj, deg):
         amb = deg.matmul(deg.transpose(0, 1))
