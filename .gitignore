@@ -1,3 +1,5 @@
-data/
-tut/
-play/
+/data/
+/tut/
+/play/
+.vscode/
+__pycache__/
