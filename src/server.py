@@ -5,6 +5,7 @@ from models import make_model
 
 class Server:
     def __init__(self, eps, delta, data) -> None:
+        # no privacy
         if eps == None:
             self.priv = False
         else:
@@ -24,15 +25,18 @@ class Server:
     def receive(self, priv_adj, priv_deg):
         self.priv_adj = priv_adj
         self.priv_deg = priv_deg
-        # project priv_deg to [1, n-1], otherwise resulting in useless prior = 0 or 1
+        # project priv_deg to [1, n-2], otherwise resulting in useless prior = 0 or 1
         self.priv_deg[priv_deg < 1] = 1
-        self.priv_deg[priv_deg > self.n - 1] = self.n - 1
+        self.priv_deg[priv_deg > self.n - 2] = self.n - 2
 
     def estimate(self):
+        # store 1 vectors to save RAM
+        ones_1xn = torch.ones(1,self.n)
+        ones_nx1 = torch.ones(self.n,1)
 
         def estimate_prior():
             def phi(x):
-                r = 1.0/(torch.exp(x).matmul(torch.ones(1,self.n)) + torch.ones(self.n,1).matmul(torch.exp(-x).reshape(1,self.n)))
+                r = 1.0/(torch.exp(x).matmul(ones_1xn) + ones_nx1.matmul(torch.exp(-x).reshape(1,self.n)))
                 return torch.log(self.priv_deg) - torch.log(r.sum(1).reshape(self.n,1) - r.diagonal().reshape(self.n,1))
             
             beta = torch.zeros(self.n, 1)
@@ -41,7 +45,7 @@ class Server:
             for _ in range(500):
                 beta = phi(beta)
 
-            s = torch.ones(self.n, 1).matmul(beta.transpose(0,1)) + beta.matmul(torch.ones(1,self.n))
+            s = ones_nx1.matmul(beta.transpose(0,1)) + beta.matmul(ones_1xn)
             prior = torch.exp(s)/(1+torch.exp(s))
             prior.fill_diagonal_(0)
             return prior
@@ -56,9 +60,16 @@ class Server:
             return pij
         
         pij = estimate_posterior(estimate_prior())
-        dth_max = pij.sort(dim=1, descending=True).values.gather(1, self.priv_deg.long() - 1)
-        self.est_edge_index = (pij >= dth_max).float().to_sparse().coalesce().indices()
-        # self.est_edge_index = (pij > 0.5).float().to_sparse().coalesce().indices()
+        # this is to choose the top degree edges of each node, and also add weights
+        # dth_max = pij.sort(dim=1, descending=True).values.gather(1, self.priv_deg.long() - 1)
+        # weighted_edges = (pij * (pij >= dth_max)).float().to_sparse().coalesce()
+        # self.est_edge_index = weighted_edges.indices()
+        # self.est_edge_value = weighted_edges.values()
+
+        # hard threshold of 0.5
+        self.est_edge_index = (pij > 0.5).float().to_sparse().coalesce().indices()
+
+        # take random graph based on pij
         # self.est_edge_index = torch.bernoulli(pij).to_sparse().coalesce().indices()
 
     def fit(self, model, d, c, hparam, iter=200):
@@ -66,13 +77,14 @@ class Server:
 
         # we train the model on GPU
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        model = make_model(model_type=model, hidden_channels=16, num_features=d, num_classes=c).to(device)
+        model = make_model(model_type=model, hidden_channels=16, num_features=d, num_classes=c, dropout_p=hparam["do"]).to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
         criterion = torch.nn.CrossEntropyLoss()
 
         self.data = self.data.to(device)
         if self.priv:
             self.est_edge_index = self.est_edge_index.to(device)
+            # self.est_edge_value = self.est_edge_value.to(device)
         else:
             self.est_edge_index = self.data.edge_index
 
