@@ -1,4 +1,5 @@
 from torch_geometric.data import dataset
+from data.citeseer import load_citeseer
 from data.cora import load_cora
 from data.lastfm import load_lastfm
 from data.pubmed import load_pubmed
@@ -10,3 +11,5 @@ def make_dataset(dataset_name, root):
         return load_pubmed(root)
     elif dataset_name == "lastfm":
         return load_lastfm(root)
+    elif dataset_name == "citeseer":
+        return load_citeseer(root)
