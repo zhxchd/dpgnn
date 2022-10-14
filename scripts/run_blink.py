@@ -60,7 +60,7 @@ if grid_search:
         hps = baseline_hparams if eps == None else hparams
 
         for hp in hps:
-            val_loss, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
+            val_loss, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 3)
             if val_loss.mean() < min_val_loss:
                 min_val_loss = val_loss.mean()
                 best_hp = hp

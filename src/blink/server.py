@@ -23,26 +23,28 @@ class Server:
         self.n = data.num_nodes
 
     def receive(self, priv_adj, priv_deg):
-        self.priv_adj = priv_adj
-        self.priv_deg = priv_deg
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.priv_adj = priv_adj.to(device)
+        self.priv_deg = priv_deg.to(device)
         # project priv_deg to [1, n-2], otherwise resulting in useless prior = 0 or 1
         self.priv_deg[priv_deg < 1] = 1
         self.priv_deg[priv_deg > self.n - 2] = self.n - 2
 
     def estimate(self):
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # store 1 vectors to save RAM
-        ones_1xn = torch.ones(1,self.n)
-        ones_nx1 = torch.ones(self.n,1)
+        ones_1xn = torch.ones(1,self.n).to(device)
+        ones_nx1 = torch.ones(self.n,1).to(device)
 
         def estimate_prior():
             def phi(x):
                 r = 1.0/(torch.exp(x).matmul(ones_1xn) + ones_nx1.matmul(torch.exp(-x).reshape(1,self.n)))
                 return torch.log(self.priv_deg) - torch.log(r.sum(1).reshape(self.n,1) - r.diagonal().reshape(self.n,1))
             
-            beta = torch.zeros(self.n, 1)
+            beta = torch.zeros(self.n, 1).to(device)
 
             # beta is a fixed point for phi
-            for _ in range(500):
+            for _ in range(200):
                 beta = phi(beta)
 
             s = ones_nx1.matmul(beta.transpose(0,1)) + beta.matmul(ones_1xn)
@@ -68,7 +70,8 @@ class Server:
 
         # hard threshold of 0.5
         self.est_edge_index = (pij > 0.5).float().to_sparse().coalesce().indices()
-
+        ones_1xn = None # reset variable so that it's no longer used and VRAM can be freed
+        ones_nx1 = None
         # take random graph based on pij
         # self.est_edge_index = torch.bernoulli(pij).to_sparse().coalesce().indices()
 
