@@ -23,11 +23,13 @@ grid_search = args.grid_search
 
 # setup logger
 logging.basicConfig(
-    filename=f"log/{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt'),
-    filemode='a',
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=logging.INFO,
-    datefmt='%Y-%m-%d %H:%M:%S')
+    datefmt='%Y-%m-%d %H:%M:%S',
+    handlers=[
+        logging.FileHandler(f"log/{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
+        logging.StreamHandler(sys.stdout)
+    ])
 logging.info(f"Start experiments with {args}")
 
 # download and load dataset
@@ -58,7 +60,7 @@ if grid_search:
         hps = baseline_hparams if eps == None else hparams
 
         for hp in hps:
-            val_loss, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 1)
+            val_loss, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
             if val_loss.mean() < min_val_loss:
                 min_val_loss = val_loss.mean()
                 best_hp = hp
