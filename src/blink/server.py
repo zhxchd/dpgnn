@@ -72,12 +72,12 @@ class Server:
         # take random graph based on pij
         # self.est_edge_index = torch.bernoulli(pij).to_sparse().coalesce().indices()
 
-    def fit(self, model, d, c, hparam, iter=200):
+    def fit(self, model, hparam, iter=200):
         log = np.zeros((iter, 3))
 
         # we train the model on GPU
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        model = make_model(model_type=model, hidden_channels=16, num_features=d, num_classes=c, dropout_p=hparam["do"]).to(device)
+        model = make_model(model_type=model, hidden_channels=16, num_features=self.data.num_features, num_classes=self.data.num_classes, dropout_p=hparam["do"]).to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
         criterion = torch.nn.CrossEntropyLoss()
 
