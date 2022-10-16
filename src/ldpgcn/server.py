@@ -14,9 +14,8 @@ class Server:
         self.priv_adj = priv_adj.to(device)
 
     def estimate(self):
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # number of edges
-        e = torch.round(self.priv_adj.sum()/2).to(device)
+        e = torch.round(self.priv_adj.sum()/2).long().item()
         # upper triangular matrix, consider both a_ij and a_ji
         atr = torch.triu(self.priv_adj, 1) + torch.triu(self.priv_adj.transpose(0,1), 1)
         # get the e largest entris in atr
