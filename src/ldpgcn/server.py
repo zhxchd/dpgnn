@@ -14,14 +14,28 @@ class Server:
         self.priv_adj = priv_adj.to(device)
 
     def estimate(self):
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # number of edges
         e = torch.round(self.priv_adj.sum()/2).long().item()
+        # the following are (very very rare) corner cases
+        # at least 0 edges, at most n*(n-1)/2 edges
+        if e <= 0:
+            # no edge to keep at all
+            self.est_edge_index = torch.zeros(self.n, self.n).to_sparse().to(device).coalesce().indices()
+            return
+        elif e >= self.n * (self.n-1)/2:
+            # keep all edges, complete graph
+            self.est_edge_index = torch.ones(self.n, self.n).to_sparse().to(device).coalesce().indices()
+            return
+
         # upper triangular matrix, consider both a_ij and a_ji
         atr = torch.triu(self.priv_adj, 1) + torch.triu(self.priv_adj.transpose(0,1), 1)
-        # get the e largest entris in atr
-        e_th = torch.topk(atr.flatten(), e).values.min()
-        atr[atr >= e_th] = 1
+        triu_mask = (torch.triu(torch.ones(self.n, self.n), 1)==1).to(device)
+        # get the e largest entris in atr (only count upper triangular part)
+        e_th = torch.topk(atr[triu_mask].flatten(), e).values.min()
         atr[atr < e_th] = 0
+        atr[atr > 0] = 1
+        atr[~triu_mask] = 0
         self.est_edge_index = (atr + atr.transpose(0,1)).to_sparse().coalesce().indices()
 
     def fit(self, model, hparam, iter=200):

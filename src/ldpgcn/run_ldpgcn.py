@@ -10,8 +10,8 @@ def run_ldpgcn(graph, linkless_graph, model_name, eps, hp, num_trials):
 
         priv_adj = client.AddLDP()
         server.receive(priv_adj)
-        server.estimate() # this line of code does no use
+        server.estimate()
         log = server.fit(model_name, hparam=hp)
-        val_loss[i] = log[:,1].min() # this val loss is without regularization terms
+        val_loss[i] = log[:,1].min()
         test_acc[i] = log[np.argmin(log[:,1])][2]
     return val_loss, test_acc

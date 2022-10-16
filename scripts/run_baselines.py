@@ -2,6 +2,8 @@
 # using baseline mechanisms including LDPGCN (LDP variant of DPGCN, SP 22) and Solitude (TIFS 22).
 
 import sys
+
+import torch
 sys.path.append('../src')
 import argparse
 from datetime import datetime
@@ -51,6 +53,9 @@ run_experiment = {
 }
 
 if grid_search:
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+    
     logging.info(f"Grid search. Load hyperparameter space from config.json")
     with open("config.json") as f:
         conf = json.load(f)
@@ -97,7 +102,10 @@ if grid_search:
     logging.info("Grid search done!")
 
 logging.info(f"Run baseline experiments using found hyperparameters in bl_best_hp.json.")
-        
+
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
+
 with open("output/bl_best_hp.json", "r") as f:
     best_hp = json.load(f)
 
