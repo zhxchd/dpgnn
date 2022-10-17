@@ -36,6 +36,7 @@ class Server:
         atr[atr < e_th] = 0
         atr[atr > 0] = 1
         atr[~triu_mask] = 0
+        triu_mask = None
         self.est_edge_index = (atr + atr.transpose(0,1)).to_sparse().coalesce().indices()
 
     def fit(self, model, hparam, iter=200):
