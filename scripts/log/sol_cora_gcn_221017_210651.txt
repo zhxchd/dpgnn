@@ -1,0 +1,29 @@
+2022-10-17 21:06:51 INFO     Start experiments with Namespace(dataset='cora', model='gcn', grid_search=False)
+2022-10-17 21:06:52 INFO     Run baseline experiments using found hyperparameters in bl_best_hp.json.
+2022-10-17 21:06:52 INFO     [solitude: gcn on cora] Start running experiments on various epsilons.
+2022-10-17 21:06:52 INFO     [solitude: gcn on cora with eps=1] Run with best hp found: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001, 'lam1': 0.001, 'lam2': 0.001}.
+2022-10-17 21:11:15 INFO     [solitude: gcn on cora with eps=1] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 21:11:15 INFO     [solitude: gcn on cora with eps=1] Saving training results to output/bl_results.json
+2022-10-17 21:11:15 INFO     [solitude: gcn on cora with eps=2] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'lam1': 0.0001, 'lam2': 0.001}.
+2022-10-17 21:13:58 INFO     [solitude: gcn on cora with eps=2] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 21:13:58 INFO     [solitude: gcn on cora with eps=2] Saving training results to output/bl_results.json
+2022-10-17 21:13:58 INFO     [solitude: gcn on cora with eps=3] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.01, 'lam1': 0.01, 'lam2': 0.0001}.
+2022-10-17 21:16:12 INFO     [solitude: gcn on cora with eps=3] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 21:16:12 INFO     [solitude: gcn on cora with eps=3] Saving training results to output/bl_results.json
+2022-10-17 21:16:12 INFO     [solitude: gcn on cora with eps=4] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.001, 'lam1': 0.0001, 'lam2': 0.0001}.
+2022-10-17 21:18:20 INFO     [solitude: gcn on cora with eps=4] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 21:18:20 INFO     [solitude: gcn on cora with eps=4] Saving training results to output/bl_results.json
+2022-10-17 21:18:20 INFO     [solitude: gcn on cora with eps=5] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'lam1': 0.001, 'lam2': 0.001}.
+2022-10-17 21:20:29 INFO     [solitude: gcn on cora with eps=5] Test accuracy is 0.4483505662235352 (0.021016918014825765).
+2022-10-17 21:20:29 INFO     [solitude: gcn on cora with eps=5] Saving training results to output/bl_results.json
+2022-10-17 21:20:29 INFO     [solitude: gcn on cora with eps=6] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'lam1': 0.0001, 'lam2': 0.001}.
+2022-10-17 21:22:35 INFO     [solitude: gcn on cora with eps=6] Test accuracy is 0.640029542097489 (0.024522165370437318).
+2022-10-17 21:22:35 INFO     [solitude: gcn on cora with eps=6] Saving training results to output/bl_results.json
+2022-10-17 21:22:35 INFO     [solitude: gcn on cora with eps=7] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'lam1': 0.001, 'lam2': 0.0001}.
+2022-10-17 21:24:42 INFO     [solitude: gcn on cora with eps=7] Test accuracy is 0.7534711964549484 (0.01589678721576314).
+2022-10-17 21:24:42 INFO     [solitude: gcn on cora with eps=7] Saving training results to output/bl_results.json
+2022-10-17 21:24:42 INFO     [solitude: gcn on cora with eps=8] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'lam1': 0.001, 'lam2': 0.0001}.
+2022-10-17 21:26:48 INFO     [solitude: gcn on cora with eps=8] Test accuracy is 0.8130477597242739 (0.013032515271653089).
+2022-10-17 21:26:48 INFO     [solitude: gcn on cora with eps=8] Saving training results to output/bl_results.json
+2022-10-17 21:26:48 INFO     [solitude: gcn on cora] Experiments done.
+2022-10-17 21:26:48 INFO     All baseline experiments done!
