@@ -9,7 +9,8 @@ class Server:
         self.n = data.num_nodes
 
     def receive(self, priv_adj):
-        self.priv_adj = priv_adj # RR result
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.priv_adj = priv_adj.to(device) # RR result
 
     def estimate(self):
         # no actual estimation is done here
