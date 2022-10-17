@@ -1,0 +1,4 @@
+2022-10-17 10:35:01 INFO     Start experiments with Namespace(dataset='cora', model='graphsage', grid_search=True)
+2022-10-17 10:35:01 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-17 10:35:01 INFO     [rr: graphsage on cora] Grid search for hyperparameter tuning on various epsilons.
+2022-10-17 10:35:01 INFO     [rr: graphsage on cora with eps=1] Start grid search for hyperparameter tuning.
