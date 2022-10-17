@@ -34,7 +34,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S',
     handlers=[
-        logging.FileHandler(f"log/bl_{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
+        logging.FileHandler(f"log/sol_{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
         logging.StreamHandler(sys.stdout)
     ])
 logging.info(f"Start experiments with {args}")

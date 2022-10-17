@@ -31,13 +31,14 @@ class Server:
         criterion = torch.nn.CrossEntropyLoss()
 
         self.data = self.data.to(device)
+        self.est_edge_indices = self.est_adj.to_sparse().coalesce().indices()
 
         def train(theta_step):
             model.train()
             theta_optimizer.zero_grad()
             adj_optimizer.zero_grad()
             # update estimated graph
-            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
+            out = model(self.data.x, self.est_edge_indices)
             # loss is to regularize the estimated adjacency matrix so it is close to received one and also sparse
             loss = criterion(out[self.data.train_mask], self.data.y[self.data.train_mask]) \
                 + hparam["lam1"] * torch.frobenius_norm(self.est_adj - self.priv_adj) \
@@ -48,18 +49,20 @@ class Server:
                 theta_optimizer.step()
             else:
                 adj_optimizer.step()
+                # est_adj is updated, update est_edge_indices as well
+                self.est_edge_indices = self.est_adj.to_sparse().coalesce().indices()
             return float(loss)
         
         def validate():
             model.eval()
-            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
+            out = model(self.data.x, self.est_edge_indices)
             # for validation loss, we no longer take the regularization terms
             loss = criterion(out[self.data.val_mask], self.data.y[self.data.val_mask])
             return float(loss)
         
         def test():
             model.eval()
-            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
+            out = model(self.data.x, self.est_edge_indices)
             pred = out.argmax(dim=1)  # Use the class with highest probability.
             test_correct = pred[self.data.test_mask] == self.data.y[self.data.test_mask]
             test_acc = int(test_correct.sum()) / int(self.data.test_mask.sum())
