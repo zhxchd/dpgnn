@@ -1,0 +1,55 @@
+2022-10-17 10:21:41 INFO     Start experiments with Namespace(dataset='cora', model='gcn', grid_search=False)
+2022-10-17 10:21:47 INFO     Run baseline experiments using found hyperparameters in bl_best_hp.json.
+2022-10-17 10:21:47 INFO     [rr: gcn on cora] Start running experiments on various epsilons.
+2022-10-17 10:21:47 INFO     [rr: gcn on cora with eps=1] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:23:24 INFO     [rr: gcn on cora with eps=1] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 10:23:24 INFO     [rr: gcn on cora with eps=1] Saving training results to output/bl_results.json
+2022-10-17 10:23:24 INFO     [rr: gcn on cora with eps=2] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:24:21 INFO     [rr: gcn on cora with eps=2] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 10:24:21 INFO     [rr: gcn on cora with eps=2] Saving training results to output/bl_results.json
+2022-10-17 10:24:21 INFO     [rr: gcn on cora with eps=3] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:25:08 INFO     [rr: gcn on cora with eps=3] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 10:25:08 INFO     [rr: gcn on cora with eps=3] Saving training results to output/bl_results.json
+2022-10-17 10:25:08 INFO     [rr: gcn on cora with eps=4] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:25:53 INFO     [rr: gcn on cora with eps=4] Test accuracy is 0.34121122599704584 (5.551115123125783e-17).
+2022-10-17 10:25:53 INFO     [rr: gcn on cora with eps=4] Saving training results to output/bl_results.json
+2022-10-17 10:25:53 INFO     [rr: gcn on cora with eps=5] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:26:37 INFO     [rr: gcn on cora with eps=5] Test accuracy is 0.43234859675036924 (0.019931430900696254).
+2022-10-17 10:26:37 INFO     [rr: gcn on cora with eps=5] Saving training results to output/bl_results.json
+2022-10-17 10:26:37 INFO     [rr: gcn on cora with eps=6] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:27:21 INFO     [rr: gcn on cora with eps=6] Test accuracy is 0.630576070901034 (0.02529072147599814).
+2022-10-17 10:27:21 INFO     [rr: gcn on cora with eps=6] Saving training results to output/bl_results.json
+2022-10-17 10:27:21 INFO     [rr: gcn on cora with eps=7] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:28:05 INFO     [rr: gcn on cora with eps=7] Test accuracy is 0.748301329394387 (0.012142245311116379).
+2022-10-17 10:28:05 INFO     [rr: gcn on cora with eps=7] Saving training results to output/bl_results.json
+2022-10-17 10:28:05 INFO     [rr: gcn on cora with eps=8] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:28:49 INFO     [rr: gcn on cora with eps=8] Test accuracy is 0.8135893648449042 (0.01270882584334943).
+2022-10-17 10:28:49 INFO     [rr: gcn on cora with eps=8] Saving training results to output/bl_results.json
+2022-10-17 10:28:49 INFO     [rr: gcn on cora] Experiments done.
+2022-10-17 10:28:49 INFO     [ldpgcn: gcn on cora] Start running experiments on various epsilons.
+2022-10-17 10:28:49 INFO     [ldpgcn: gcn on cora with eps=1] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:29:34 INFO     [ldpgcn: gcn on cora with eps=1] Test accuracy is 0.42456917774495323 (0.023500001484217724).
+2022-10-17 10:29:34 INFO     [ldpgcn: gcn on cora with eps=1] Saving training results to output/bl_results.json
+2022-10-17 10:29:34 INFO     [ldpgcn: gcn on cora with eps=2] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:30:20 INFO     [ldpgcn: gcn on cora with eps=2] Test accuracy is 0.44145741014278683 (0.018225875413111617).
+2022-10-17 10:30:20 INFO     [ldpgcn: gcn on cora with eps=2] Saving training results to output/bl_results.json
+2022-10-17 10:30:20 INFO     [ldpgcn: gcn on cora with eps=3] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:31:06 INFO     [ldpgcn: gcn on cora with eps=3] Test accuracy is 0.5032003938946331 (0.021345173432379457).
+2022-10-17 10:31:06 INFO     [ldpgcn: gcn on cora with eps=3] Saving training results to output/bl_results.json
+2022-10-17 10:31:06 INFO     [ldpgcn: gcn on cora with eps=4] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:31:52 INFO     [ldpgcn: gcn on cora with eps=4] Test accuracy is 0.6565238798621368 (0.018349159874914305).
+2022-10-17 10:31:52 INFO     [ldpgcn: gcn on cora with eps=4] Saving training results to output/bl_results.json
+2022-10-17 10:31:52 INFO     [ldpgcn: gcn on cora with eps=5] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:32:38 INFO     [ldpgcn: gcn on cora with eps=5] Test accuracy is 0.7833087149187593 (0.010091628355226546).
+2022-10-17 10:32:38 INFO     [ldpgcn: gcn on cora with eps=5] Saving training results to output/bl_results.json
+2022-10-17 10:32:38 INFO     [ldpgcn: gcn on cora with eps=6] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-17 10:33:23 INFO     [ldpgcn: gcn on cora with eps=6] Test accuracy is 0.8335795174790744 (0.010715092473646826).
+2022-10-17 10:33:23 INFO     [ldpgcn: gcn on cora with eps=6] Saving training results to output/bl_results.json
+2022-10-17 10:33:23 INFO     [ldpgcn: gcn on cora with eps=7] Run with best hp found: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:34:09 INFO     [ldpgcn: gcn on cora with eps=7] Test accuracy is 0.8569177744953227 (0.006624869794802234).
+2022-10-17 10:34:09 INFO     [ldpgcn: gcn on cora with eps=7] Saving training results to output/bl_results.json
+2022-10-17 10:34:09 INFO     [ldpgcn: gcn on cora with eps=8] Run with best hp found: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-17 10:34:55 INFO     [ldpgcn: gcn on cora with eps=8] Test accuracy is 0.8610044313146233 (0.007339591284375098).
+2022-10-17 10:34:55 INFO     [ldpgcn: gcn on cora with eps=8] Saving training results to output/bl_results.json
+2022-10-17 10:34:55 INFO     [ldpgcn: gcn on cora] Experiments done.
+2022-10-17 10:34:55 INFO     All baseline experiments done!
