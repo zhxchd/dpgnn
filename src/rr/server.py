@@ -9,12 +9,12 @@ class Server:
         self.n = data.num_nodes
 
     def receive(self, priv_adj):
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.priv_adj = priv_adj.to(device) # RR result
+        self.priv_adj = priv_adj # RR result
 
     def estimate(self):
         # no actual estimation is done here
-        self.est_edge_index = self.priv_adj.float().to_sparse().coalesce().indices()
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.est_edge_index = self.priv_adj.float().to_sparse().coalesce().indices().to(device)
 
     def fit(self, model, hparam, iter=200):
         log = np.zeros((iter, 3))
