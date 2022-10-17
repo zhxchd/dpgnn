@@ -26,9 +26,8 @@ class Server:
         self.est_adj = self.priv_adj.clone().detach().requires_grad_(True).to(device)
 
         model = make_model(model_type=model, hidden_channels=16, num_features=self.data.num_features, num_classes=self.data.num_classes, dropout_p=hparam["do"]).to(device)
-        # two optimizers may have different configurations
-        theta_optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr1"], weight_decay=hparam["wd1"])
-        adj_optimizer = torch.optim.Adam([self.est_adj], lr=hparam["lr2"], weight_decay=hparam["wd2"])
+        theta_optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
+        adj_optimizer = torch.optim.Adam([self.est_adj], lr=hparam["lr"], weight_decay=hparam["wd"])
         criterion = torch.nn.CrossEntropyLoss()
 
         self.data = self.data.to(device)
