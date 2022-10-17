@@ -1,0 +1,56 @@
+2022-10-17 03:43:26 INFO     Start experiments with Namespace(dataset='cora', model='gcn', grid_search=True)
+2022-10-17 03:43:32 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-17 03:43:32 INFO     [rr: gcn on cora] Grid search for hyperparameter tuning on various epsilons.
+2022-10-17 03:43:32 INFO     [rr: gcn on cora with eps=1] Start grid search for hyperparameter tuning.
+2022-10-17 03:46:40 INFO     [rr: gcn on cora with eps=1] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.8138657013575237
+2022-10-17 03:46:40 INFO     [rr: gcn on cora with eps=1] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:46:40 INFO     [rr: gcn on cora with eps=2] Start grid search for hyperparameter tuning.
+2022-10-17 03:49:06 INFO     [rr: gcn on cora with eps=2] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.8141889572143555
+2022-10-17 03:49:06 INFO     [rr: gcn on cora with eps=2] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:49:06 INFO     [rr: gcn on cora with eps=3] Start grid search for hyperparameter tuning.
+2022-10-17 03:51:19 INFO     [rr: gcn on cora with eps=3] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.8143359422683716
+2022-10-17 03:51:19 INFO     [rr: gcn on cora with eps=3] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:51:19 INFO     [rr: gcn on cora with eps=4] Start grid search for hyperparameter tuning.
+2022-10-17 03:53:30 INFO     [rr: gcn on cora with eps=4] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001} with validation loss 1.813747803370158
+2022-10-17 03:53:30 INFO     [rr: gcn on cora with eps=4] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:53:30 INFO     [rr: gcn on cora with eps=5] Start grid search for hyperparameter tuning.
+2022-10-17 03:55:41 INFO     [rr: gcn on cora with eps=5] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation loss 1.5893826882044475
+2022-10-17 03:55:41 INFO     [rr: gcn on cora with eps=5] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:55:41 INFO     [rr: gcn on cora with eps=6] Start grid search for hyperparameter tuning.
+2022-10-17 03:57:51 INFO     [rr: gcn on cora with eps=6] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation loss 1.0350458025932312
+2022-10-17 03:57:51 INFO     [rr: gcn on cora with eps=6] Saving best hp to output/bl_best_hp.json
+2022-10-17 03:57:51 INFO     [rr: gcn on cora with eps=7] Start grid search for hyperparameter tuning.
+2022-10-17 04:00:01 INFO     [rr: gcn on cora with eps=7] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001} with validation loss 0.7421779036521912
+2022-10-17 04:00:01 INFO     [rr: gcn on cora with eps=7] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:00:01 INFO     [rr: gcn on cora with eps=8] Start grid search for hyperparameter tuning.
+2022-10-17 04:02:11 INFO     [rr: gcn on cora with eps=8] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001} with validation loss 0.5848676760991415
+2022-10-17 04:02:11 INFO     [rr: gcn on cora with eps=8] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:02:11 INFO     [rr: gcn on cora] Grid search done.
+2022-10-17 04:02:11 INFO     [ldpgcn: gcn on cora] Grid search for hyperparameter tuning on various epsilons.
+2022-10-17 04:02:11 INFO     [ldpgcn: gcn on cora with eps=1] Start grid search for hyperparameter tuning.
+2022-10-17 04:04:26 INFO     [ldpgcn: gcn on cora with eps=1] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.4229002396265666
+2022-10-17 04:04:26 INFO     [ldpgcn: gcn on cora with eps=1] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:04:26 INFO     [ldpgcn: gcn on cora with eps=2] Start grid search for hyperparameter tuning.
+2022-10-17 04:06:42 INFO     [ldpgcn: gcn on cora with eps=2] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.4675420920054119
+2022-10-17 04:06:42 INFO     [ldpgcn: gcn on cora with eps=2] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:06:42 INFO     [ldpgcn: gcn on cora with eps=3] Start grid search for hyperparameter tuning.
+2022-10-17 04:08:58 INFO     [ldpgcn: gcn on cora with eps=3] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001} with validation loss 1.2910886605580647
+2022-10-17 04:08:58 INFO     [ldpgcn: gcn on cora with eps=3] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:08:58 INFO     [ldpgcn: gcn on cora with eps=4] Start grid search for hyperparameter tuning.
+2022-10-17 04:11:13 INFO     [ldpgcn: gcn on cora with eps=4] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation loss 0.9420817295710245
+2022-10-17 04:11:13 INFO     [ldpgcn: gcn on cora with eps=4] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:11:13 INFO     [ldpgcn: gcn on cora with eps=5] Start grid search for hyperparameter tuning.
+2022-10-17 04:13:29 INFO     [ldpgcn: gcn on cora with eps=5] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001} with validation loss 0.6556905706723531
+2022-10-17 04:13:29 INFO     [ldpgcn: gcn on cora with eps=5] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:13:29 INFO     [ldpgcn: gcn on cora with eps=6] Start grid search for hyperparameter tuning.
+2022-10-17 04:15:45 INFO     [ldpgcn: gcn on cora with eps=6] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation loss 0.5301214655240377
+2022-10-17 04:15:45 INFO     [ldpgcn: gcn on cora with eps=6] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:15:45 INFO     [ldpgcn: gcn on cora with eps=7] Start grid search for hyperparameter tuning.
+2022-10-17 04:18:00 INFO     [ldpgcn: gcn on cora with eps=7] Best hparam is: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001} with validation loss 0.4893830120563507
+2022-10-17 04:18:00 INFO     [ldpgcn: gcn on cora with eps=7] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:18:00 INFO     [ldpgcn: gcn on cora with eps=8] Start grid search for hyperparameter tuning.
+2022-10-17 04:20:16 INFO     [ldpgcn: gcn on cora with eps=8] Best hparam is: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001} with validation loss 0.4761062761147817
+2022-10-17 04:20:16 INFO     [ldpgcn: gcn on cora with eps=8] Saving best hp to output/bl_best_hp.json
+2022-10-17 04:20:16 INFO     [ldpgcn: gcn on cora] Grid search done.
+2022-10-17 04:20:16 INFO     [solitude: gcn on cora] Grid search for hyperparameter tuning on various epsilons.
+2022-10-17 04:20:16 INFO     [solitude: gcn on cora with eps=1] Start grid search for hyperparameter tuning.
