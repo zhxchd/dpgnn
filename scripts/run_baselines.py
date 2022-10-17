@@ -45,7 +45,8 @@ linkless_graph = graph.clone()
 linkless_graph.edge_index = None
 
 eps_list = [1,2,3,4,5,6,7,8]
-mechanisms = ["rr", "ldpgcn", "solitude"]
+# for now, don't run solitude because it's real slow (grid search part, two many hparams)
+mechanisms = ["rr", "ldpgcn"]
 run_experiment = {
     "rr": rr.run_rr,
     "ldpgcn": ldpgcn.run_ldpgcn,
