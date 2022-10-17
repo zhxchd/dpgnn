@@ -46,7 +46,7 @@ linkless_graph.edge_index = None
 
 eps_list = [1,2,3,4,5,6,7,8]
 # for now, don't run solitude because it's real slow (grid search part, two many hparams)
-mechanisms = ["ldpgcn"]
+mechanisms = ["solitude"]
 run_experiment = {
     "rr": rr.run_rr,
     "ldpgcn": ldpgcn.run_ldpgcn,
@@ -78,7 +78,7 @@ if grid_search:
             best_hp = None
 
             for hp in hp_list[m]:
-                val_loss, _ = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 3)
+                val_loss, _ = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 1)
                 if val_loss.mean() < min_val_loss:
                     min_val_loss = val_loss.mean()
                     best_hp = hp
