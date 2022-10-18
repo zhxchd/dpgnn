@@ -37,7 +37,7 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         plt.xlabel("$\epsilon$")
         plt.ylabel("Accuracy (\%)")
 
-        # legend=plt.legend(loc=4)
+        legend=plt.legend(loc=4)
 
         plt.savefig(f"figures/{dataset}_{model}.pdf", bbox_inches='tight')
         # there will be figures popping up
