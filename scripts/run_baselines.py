@@ -44,7 +44,7 @@ graph = make_dataset(dataset_name, root="../data")
 linkless_graph = graph.clone()
 linkless_graph.edge_index = None
 
-eps_list = [1,2,3,4,5,6,7,8]
+eps_list = [4,5,6,7,8]
 # for now, don't run solitude because it's real slow (grid search part, two many hparams)
 mechanisms = ["solitude"]
 run_experiment = {
