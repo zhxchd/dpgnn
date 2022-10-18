@@ -37,8 +37,18 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         plt.xlabel("$\epsilon$")
         plt.ylabel("Accuracy (\%)")
 
-        legend=plt.legend(loc=4)
-
         plt.savefig(f"figures/{dataset}_{model}.pdf", bbox_inches='tight')
+        legend=plt.legend()
+        ax = plt.gca()
         # there will be figures popping up
         plt.show()
+
+# then create a new image
+# adjust the figure size as necessary
+fig_leg = plt.figure()
+ax_leg = fig_leg.add_subplot()
+# add the legend from the previous axes
+ax_leg.legend(*ax.get_legend_handles_labels(), loc='center', ncol=4)
+# hide the axes frame and the x/y labels
+ax_leg.axis('off')
+fig_leg.savefig("figures/legend.pdf", bbox_inches='tight')
