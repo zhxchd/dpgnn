@@ -22,9 +22,9 @@ class Server:
 
         # we train the model on GPU
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        # estemated adjacency list, to be optimized
-        # self.est_adj = self.priv_adj.clone().detach().requires_grad_(True).to(device)
-        self.est_adj = torch.zeros(self.n, self.n, device=device, requires_grad=True)
+        # estemated adjacency list, to be optimized, initialized to noisy adj
+        self.est_adj = self.priv_adj.clone().detach().requires_grad_(True).to(device)
+        # self.est_adj = torch.zeros(self.n, self.n, device=device, requires_grad=True)
 
         model = make_model(model_type=model, hidden_channels=16, num_features=self.data.num_features, num_classes=self.data.num_classes, dropout_p=hparam["do"]).to(device)
         theta_optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
@@ -32,14 +32,13 @@ class Server:
         criterion = torch.nn.CrossEntropyLoss()
 
         self.data = self.data.to(device)
-        self.est_edge_indices = self.est_adj.to_sparse().coalesce().indices()
 
         def train(theta_step):
             model.train()
             theta_optimizer.zero_grad()
             adj_optimizer.zero_grad()
             # update estimated graph
-            out = model(self.data.x, self.est_edge_indices)
+            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
             # loss is to regularize the estimated adjacency matrix so it is close to received one and also sparse
             loss = criterion(out[self.data.train_mask], self.data.y[self.data.train_mask]) \
                 + hparam["lam1"] * torch.frobenius_norm(self.est_adj - self.priv_adj) \
@@ -50,20 +49,21 @@ class Server:
                 theta_optimizer.step()
             else:
                 adj_optimizer.step()
-                # est_adj is updated, update est_edge_indices as well
-                self.est_edge_indices = self.est_adj.to_sparse().coalesce().indices()
+                # we still want est_adj to be 0/1 matrix, hard threshold at 0.5
+                self.est_adj[self.est_adj >= 0.5] = 1.0
+                self.est_adj[self.est_adj < 0.5] = 0.0
             return float(loss)
         
         def validate():
             model.eval()
-            out = model(self.data.x, self.est_edge_indices)
+            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
             # for validation loss, we no longer take the regularization terms
             loss = criterion(out[self.data.val_mask], self.data.y[self.data.val_mask])
             return float(loss)
         
         def test():
             model.eval()
-            out = model(self.data.x, self.est_edge_indices)
+            out = model(self.data.x, self.est_adj.to_sparse().coalesce().indices())
             pred = out.argmax(dim=1)  # Use the class with highest probability.
             test_correct = pred[self.data.test_mask] == self.data.y[self.data.test_mask]
             test_acc = int(test_correct.sum()) / int(self.data.test_mask.sum())
