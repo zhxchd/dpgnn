@@ -28,7 +28,7 @@ class Server:
 
         model = make_model(model_type=model, hidden_channels=16, num_features=self.data.num_features, num_classes=self.data.num_classes, dropout_p=hparam["do"]).to(device)
         theta_optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
-        adj_optimizer = torch.optim.Adam([self.est_adj], lr=hparam["lr"], weight_decay=hparam["wd"])
+        adj_optimizer = torch.optim.Adam([self.est_adj], lr=0.1) # if lr is small then adj will not change after rounding
         criterion = torch.nn.CrossEntropyLoss()
 
         self.data = self.data.to(device)
@@ -50,8 +50,7 @@ class Server:
             else:
                 adj_optimizer.step()
                 # we still want est_adj to be 0/1 matrix, hard threshold at 0.5
-                self.est_adj[self.est_adj >= 0.5] = 1.0
-                self.est_adj[self.est_adj < 0.5] = 0.0
+                self.est_adj = (self.est_adj >= 0.5).float().to(device)
             return float(loss)
         
         def validate():
