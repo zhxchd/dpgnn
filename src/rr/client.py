@@ -19,7 +19,7 @@ class Client():
         def rr_adj() -> torch.Tensor:
             p = 1.0/(1.0+math.exp(self.eps))
             # return 1 with probability p, but does not flip diagonal edges since no self loop allowed
-            res = ((adj + torch.bernoulli(torch.full((n, n), p))) % 2).float()
+            res = ((adj + torch.bernoulli(torch.full((n, n), p))) % 2).bool() # reduce the size by using bool tensor
             res.fill_diagonal_(0)
             return res # still on CPU
 

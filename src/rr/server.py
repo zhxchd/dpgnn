@@ -15,7 +15,7 @@ class Server:
     def estimate(self):
         # no actual estimation is done here
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.est_edge_index = self.priv_adj.float().to_sparse().coalesce().indices().to(device) #sparse tensor move to GPU
+        self.est_edge_index = self.priv_adj.to_sparse().coalesce().indices().to(device) #sparse tensor move to GPU
 
     def fit(self, model, hparam, iter=200):
         log = np.zeros((iter, 3))
