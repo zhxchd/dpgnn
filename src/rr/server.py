@@ -9,13 +9,13 @@ class Server:
         self.n = data.num_nodes
 
     def receive(self, priv_adj):
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.priv_adj = priv_adj.to(device) # RR result
+        # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.priv_adj = priv_adj # RR result, on CPU
 
     def estimate(self):
         # no actual estimation is done here
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.est_edge_index = self.priv_adj.float().to_sparse().coalesce().indices().to(device)
+        self.est_edge_index = self.priv_adj.float().to_sparse().coalesce().indices().to(device) #sparse tensor move to GPU
 
     def fit(self, model, hparam, iter=200):
         log = np.zeros((iter, 3))
@@ -26,7 +26,7 @@ class Server:
         optimizer = torch.optim.Adam(model.parameters(), lr=hparam["lr"], weight_decay=hparam["wd"])
         criterion = torch.nn.CrossEntropyLoss()
 
-        self.data = self.data.to(device)
+        self.data = self.data.to(device) # data on GPU
         self.est_edge_index = self.est_edge_index.to(device)
 
         def train():
