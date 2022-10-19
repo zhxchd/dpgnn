@@ -36,7 +36,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S',
     handlers=[
-        logging.FileHandler(f"log/{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
+        logging.FileHandler(f"log/bl_{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
         logging.StreamHandler(sys.stdout)
     ])
 logging.info(f"Start experiments with {args}")
@@ -111,31 +111,31 @@ if grid_search:
 
 logging.info(f"Run baseline experiments using found hyperparameters in bl_best_hp.json.")
 
-# torch.backends.cuda.matmul.allow_tf32 = False
-# torch.backends.cudnn.allow_tf32 = False
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
 
-# with open("output/bl_best_hp.json", "r") as f:
-#     best_hp = json.load(f)
+with open("output/bl_best_hp.json", "r") as f:
+    best_hp = json.load(f)
 
-# for m in mechanisms:
-#     logging.info(f"[{m}: {model_name} on {dataset_name}] Start running experiments on various epsilons.")
-#     for eps in eps_list:
-#         hp = best_hp[dataset_name][model_name][m][str(eps)]
-#         logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Run with best hp found: {hp}.")
-#         _, acc = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 30)
-#         logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Test accuracy is {acc.mean()} ({acc.std()}).")
-#         logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Saving training results to output/bl_results.json")
-#         with open("output/bl_results.json") as f:
-#             acc_dict = json.load(f)
-#         if dataset_name not in acc_dict:
-#             acc_dict[dataset_name] = {}
-#         if model_name not in acc_dict[dataset_name]:
-#             acc_dict[dataset_name][model_name] = {}
-#         if m not in acc_dict[dataset_name][model_name]:
-#             acc_dict[dataset_name][model_name][m] = {}
-#         acc_dict[dataset_name][model_name][m][str(eps)] = [acc.mean(), acc.std()]
-#         with open('output/bl_results.json', 'w') as fp:
-#             json.dump(acc_dict, fp, indent=2)
-#     logging.info(f"[{m}: {model_name} on {dataset_name}] Experiments done.")
+for m in mechanisms:
+    logging.info(f"[{m}: {model_name} on {dataset_name}] Start running experiments on various epsilons.")
+    for eps in eps_list:
+        hp = best_hp[dataset_name][model_name][m][str(eps)]
+        logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Run with best hp found: {hp}.")
+        _, acc = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 30)
+        logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Test accuracy is {acc.mean()} ({acc.std()}).")
+        logging.info(f"[{m}: {model_name} on {dataset_name} with eps={eps}] Saving training results to output/bl_results.json")
+        with open("output/bl_results.json") as f:
+            acc_dict = json.load(f)
+        if dataset_name not in acc_dict:
+            acc_dict[dataset_name] = {}
+        if model_name not in acc_dict[dataset_name]:
+            acc_dict[dataset_name][model_name] = {}
+        if m not in acc_dict[dataset_name][model_name]:
+            acc_dict[dataset_name][model_name][m] = {}
+        acc_dict[dataset_name][model_name][m][str(eps)] = [acc.mean(), acc.std()]
+        with open('output/bl_results.json', 'w') as fp:
+            json.dump(acc_dict, fp, indent=2)
+    logging.info(f"[{m}: {model_name} on {dataset_name}] Experiments done.")
 
-# logging.info(f"All baseline experiments done!")
+logging.info(f"All baseline experiments done!")
