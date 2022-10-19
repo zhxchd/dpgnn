@@ -1,5 +1,5 @@
 # this script runs experiments on specified dataset with specified model
-# using baseline mechanisms including LDPGCN (LDP variant of DPGCN, SP 22) and Solitude (TIFS 22).
+# using baseline mechanisms including RR, LDPGCN (LDP variant of DPGCN, SP 22) and Solitude (TIFS 22).
 
 import sys
 
@@ -21,12 +21,14 @@ from data import make_dataset
 parser = argparse.ArgumentParser(description='Start baseline experiment with specified dataset and model.')
 parser.add_argument("dataset", type=str, help="Dataset, one of 'cora', 'citeseer' or 'lastfm'.")
 parser.add_argument("model", type=str, help="Model name, 'gcn', 'graphsage' or 'gat'.")
+parser.add_argument("--method", nargs='*', type=str, help="Specify what baseline methods to run, list of 'rr', 'ldpgcn' and 'solitude'.")
 parser.add_argument("--grid_search", action="store_true")
 args = parser.parse_args()
 
 dataset_name = args.dataset
 model_name = args.model
 grid_search = args.grid_search
+method = args.method
 
 # setup logger
 logging.basicConfig(
@@ -34,7 +36,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S',
     handlers=[
-        logging.FileHandler(f"log/bl_{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
+        logging.FileHandler(f"log/{dataset_name}_{model_name}_"+datetime.now().strftime('%y%m%d_%H%M%S.txt')),
         logging.StreamHandler(sys.stdout)
     ])
 logging.info(f"Start experiments with {args}")
@@ -45,14 +47,18 @@ linkless_graph = graph.clone()
 linkless_graph.edge_index = None
 
 eps_list = [1,2,3,4,5,6,7,8]
-# for now, don't run solitude because it's real slow (grid search part, two many hparams)
-# solitude is now handled in another branch
-mechanisms = ["ldpgcn"]
+mechanisms = ["rr", "ldpgcn", "solitude"]
 run_experiment = {
     "rr": rr.run_rr,
     "ldpgcn": ldpgcn.run_ldpgcn,
     "solitude": solitude.run_solitude
 }
+
+# if specified only run specified method
+if method == None or len(method) == 0:
+    pass
+else:
+    mechanisms = method
 
 if grid_search:
     torch.backends.cuda.matmul.allow_tf32 = True
