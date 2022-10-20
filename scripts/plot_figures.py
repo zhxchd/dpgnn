@@ -36,6 +36,8 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         plot(x, [bl_res[dataset][model]["rr"][i][0] for i in x], [bl_res[dataset][model]["rr"][i][1] for i in x], color="c", label="RR", fill=False)
 
         # plt.ylim(ymin=0.2, ymax=0.9)
+        if plt.gca().get_ylim()[0] > 0.5:
+            plt.ylim(ymin=0.5)
         plt.xlabel("$\epsilon$")
         plt.ylabel("Accuracy (\%)")
 
