@@ -1,3 +1,4 @@
+import torch
 import argparse
 from itertools import product
 import logging
@@ -49,7 +50,15 @@ if args.eps == None or len(args.eps) == 0:
 else:
     eps_list = [int(i) if i != "None" else None for i in args.eps]
 
+# setting device on GPU if available, else CPU
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+logging.info(f'Using device: {device}')
+if device.type == 'cuda':
+    logging.info(f"{torch.cuda.get_device_properties(0)}")
+
 if grid_search:
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
     logging.info(f"Grid search. Load hyperparameter space from config.json")
     with open("config.json") as f:
         conf = json.load(f)
@@ -90,6 +99,9 @@ if grid_search:
     logging.info(f"Grid search done!")
 
 logging.info(f"Run experiments using found hyperparameters in best_hp.json.")
+
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
 
 with open("output/best_hp.json", "r") as f:
     best_hp = json.load(f)

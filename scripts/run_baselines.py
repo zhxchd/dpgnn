@@ -66,6 +66,12 @@ if method == None or len(method) == 0:
 else:
     mechanisms = method
 
+# setting device on GPU if available, else CPU
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+logging.info(f'Using device: {device}')
+if device.type == 'cuda':
+    logging.info(f"{torch.cuda.get_device_properties(0)}")
+
 if grid_search:
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
