@@ -91,7 +91,7 @@ if grid_search:
             best_hp = None
 
             for hp in hp_list[m]:
-                val_loss, _ = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 3)
+                val_loss, _ = run_experiment[m](graph, linkless_graph, model_name, eps, hp, 5)
                 if val_loss.mean() < min_val_loss:
                     min_val_loss = val_loss.mean()
                     best_hp = hp
