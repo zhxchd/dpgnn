@@ -23,7 +23,7 @@ parser.add_argument("dataset", type=str, help="Dataset, one of 'cora', 'citeseer
 parser.add_argument("model", type=str, help="Model name, 'gcn', 'graphsage' or 'gat'.")
 parser.add_argument("--method", nargs='*', type=str, help="Specify what baseline methods to run, list of 'rr', 'ldpgcn' and 'solitude'.")
 parser.add_argument("--grid_search", action="store_true")
-parser.add_argument("--eps", nargs='*', type=float, help="Specify what epsilons to run with.")
+parser.add_argument("--eps", nargs='*', type=int, help="Specify what epsilons (integers only) to run with.")
 args = parser.parse_args()
 
 dataset_name = args.dataset
