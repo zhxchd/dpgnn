@@ -19,7 +19,8 @@ for dataset in ["cora", "citeseer", "lastfm"]:
     for model in ["gcn", "graphsage", "gat"]:
         plt.rcParams.update({
             "text.usetex": True,
-            "font.family": "serif"
+            "font.family": "serif",
+            "font.size": 14
         })
         rc("figure", figsize=(4,3))
 
