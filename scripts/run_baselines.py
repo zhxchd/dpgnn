@@ -23,6 +23,7 @@ parser.add_argument("dataset", type=str, help="Dataset, one of 'cora', 'citeseer
 parser.add_argument("model", type=str, help="Model name, 'gcn', 'graphsage' or 'gat'.")
 parser.add_argument("--method", nargs='*', type=str, help="Specify what baseline methods to run, list of 'rr', 'ldpgcn' and 'solitude'.")
 parser.add_argument("--grid_search", action="store_true")
+parser.add_argument("--eps", nargs='*', type=float, help="Specify what epsilons to run with.")
 args = parser.parse_args()
 
 dataset_name = args.dataset
@@ -47,6 +48,11 @@ linkless_graph = graph.clone()
 linkless_graph.edge_index = None
 
 eps_list = [1,2,3,4,5,6,7,8]
+if args.eps == None or len(args.eps) == 0:
+    pass
+else:
+    eps_list = args.eps
+
 mechanisms = ["rr", "ldpgcn", "solitude"]
 run_experiment = {
     "rr": rr.run_rr,

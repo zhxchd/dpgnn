@@ -15,6 +15,7 @@ parser = argparse.ArgumentParser(description='Start experiment with specified da
 parser.add_argument("dataset", type=str, help="Dataset, one of 'cora', 'citeseer' or 'lastfm'.")
 parser.add_argument("model", type=str, help="Model, 'mlp', 'gcn', 'graphsage' or 'gat'.")
 parser.add_argument("--grid_search", action="store_true")
+parser.add_argument("--eps", nargs='*', type=float, help="Specify what epsilons to run with.")
 args = parser.parse_args()
 
 dataset_name = args.dataset
@@ -41,6 +42,12 @@ eps_list = [None]
 
 if model_name != "mlp":
     eps_list = [i for i in range(1,9)] + eps_list
+
+# argument override default choices
+if args.eps == None or len(args.eps) == 0:
+    pass
+else:
+    eps_list = args.eps
 
 if grid_search:
     logging.info(f"Grid search. Load hyperparameter space from config.json")
