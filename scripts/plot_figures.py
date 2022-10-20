@@ -24,6 +24,8 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         })
         rc("figure", figsize=(4,3))
 
+        fig = plt.figure()
+
         x = ["1","2","3","4","5","6","7","8"]
 
         # draw non private accuracy (upper bound)
@@ -37,8 +39,8 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         plot(x, [bl_res[dataset][model]["rr"][i][0] for i in x], [bl_res[dataset][model]["rr"][i][1] for i in x], color="c", label="RR", fill=False)
 
         # plt.ylim(ymin=0.2, ymax=0.9)
-        if plt.gca().get_ylim()[0] > 0.5:
-            plt.ylim(ymin=0.5)
+        if plt.gca().get_ylim()[0] > 0.6:
+            plt.ylim(ymin=0.6)
         plt.xlabel("$\epsilon$")
         plt.ylabel("Accuracy (\%)")
 
@@ -46,7 +48,7 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         legend=plt.legend()
         ax = plt.gca()
         # there will be figures popping up
-        plt.show()
+        plt.close(fig)
 
 # then create a new image
 # adjust the figure size as necessary
