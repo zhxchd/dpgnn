@@ -2,7 +2,7 @@ import math
 import numpy as np
 import torch
 from models import make_model
-from torchmetrics.functional import f1_score
+from torchmetrics.functional.classification import multiclass_f1_score
 
 class Server:
     def __init__(self, eps, delta, data) -> None:
@@ -77,7 +77,7 @@ class Server:
         # self.est_edge_index = torch.bernoulli(pij).to_sparse().coalesce().indices()
 
     def fit(self, model, hparam, iter=200):
-        log = np.zeros((iter, 5))
+        log = np.zeros((iter, 4))
 
         # we train the model on GPU
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -106,24 +106,22 @@ class Server:
             out = model(self.data.x, self.est_edge_index)
             loss = criterion(out[self.data.val_mask], self.data.y[self.data.val_mask])
             pred = out.argmax(dim=1)
-            f1 = f1_score(pred[self.data.val_mask], self.data.y[self.data.val_mask], num_classes=self.data.num_classes)
+            f1 = multiclass_f1_score(pred[self.data.val_mask], self.data.y[self.data.val_mask], num_classes=self.data.num_classes)
             return float(loss), float(f1)
         
         def test():
             model.eval()
             out = model(self.data.x, self.est_edge_index)
             pred = out.argmax(dim=1)  # Use the class with highest probability.
-            test_correct = pred[self.data.test_mask] == self.data.y[self.data.test_mask]
-            test_acc = int(test_correct.sum()) / int(self.data.test_mask.sum())
-            f1 = f1_score(pred[self.data.test_mask], self.data.y[self.data.test_mask], num_classes=self.data.num_classes)
-            return test_acc, float(f1)
+            f1 = multiclass_f1_score(pred[self.data.test_mask], self.data.y[self.data.test_mask], num_classes=self.data.num_classes)
+            return float(f1)
         
         for epoch in range(1, iter+1):
             train_loss = train()
             val_loss, val_f1 = validate()
-            test_acc, test_f1 = test()
-            log[epoch-1] = [train_loss, val_loss, val_f1, test_acc, test_f1]
+            test_f1 = test()
+            log[epoch-1] = [train_loss, val_loss, val_f1, test_f1]
         
         # return numpy array of iter rows,
-        # each row is (train loss, validation loss, validation f1 score, test accuracy and test f1 score)
+        # each row is (train loss, validation loss, validation f1 score, and test f1 score)
         return log

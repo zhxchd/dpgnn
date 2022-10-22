@@ -76,7 +76,7 @@ if grid_search:
         hps = baseline_hparams if eps == None else hparams
 
         for hp in hps:
-            val_f1, _, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
+            val_f1, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
             if val_f1.mean() > max_val_f1:
                 max_val_f1 = val_f1.mean()
                 best_hp = hp
@@ -109,8 +109,7 @@ with open("output/best_hp.json", "r") as f:
 for eps in eps_list:
     hp = best_hp[dataset_name][model_name][str(eps)]
     logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Run with best hp found: {hp}.")
-    _, test_acc, test_f1 = run_blink(graph, linkless_graph, model_name, eps, hp, 30)
-    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Test accuracy is {test_acc.mean()} ({test_acc.std()}).")
+    _, test_f1 = run_blink(graph, linkless_graph, model_name, eps, hp, 30)
     logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Test F1 score is {test_f1.mean()} ({test_f1.std()}).")
     logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Saving results to output/results.json")
 
@@ -120,8 +119,6 @@ for eps in eps_list:
         acc_dict[dataset_name] = {}
     if model_name not in acc_dict[dataset_name]:
         acc_dict[dataset_name][model_name] = {}
-    acc_dict[dataset_name][model_name][str(eps)] = {}
-    acc_dict[dataset_name][model_name][str(eps)]["acc"] = [test_acc.mean(), test_acc.std()]
-    acc_dict[dataset_name][model_name][str(eps)]["f1"] = [test_f1.mean(), test_f1.std()]
+    acc_dict[dataset_name][model_name][str(eps)] = [test_f1.mean(), test_f1.std()]
     with open('output/results.json', 'w') as fp:
         json.dump(acc_dict, fp, indent=2)
