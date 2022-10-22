@@ -9,9 +9,9 @@ with open("output/results.json") as f:
 with open("output/bl_results.json") as f:
     bl_res = json.load(f)
 
-def plot(x, y, yerr, color, label, fill=False):
-    plt.plot(x, y, marker=" ", color=color, label=label)
-    plt.errorbar(x, y, yerr=yerr, elinewidth=1, color=color, capsize=2)
+def plot(x, y, yerr, color, label, linestyle="solid", fill=False):
+    plt.plot(x, y, marker=" ", ls=linestyle, color=color, label=label)
+    plt.errorbar(x, y, yerr=yerr, fmt="none", elinewidth=1, color=color, capsize=2)
     if fill:
         plt.fill_between(x, [a_i - b_i for a_i, b_i in zip(y, yerr)], [a_i + b_i for a_i, b_i in zip(y, yerr)], alpha=0.25, color=color)
 
@@ -29,18 +29,18 @@ for dataset in ["cora", "citeseer", "lastfm"]:
         x = ["1","2","3","4","5","6","7","8"]
 
         # draw non private accuracy (upper bound)
-        plt.plot(x, [blink_res[dataset][model]["None"][0] for i in x], linestyle=':', marker=" ", color="green", label="$\epsilon=\infty$ (non-private)")
+        plt.plot(x, [blink_res[dataset][model]["None"][0]*100 for i in x], linestyle=':', marker=" ", color="green", label="$\epsilon=\infty$ (non-private)")
 
         # draw pure privacy MLP (lower bound)
-        plt.plot(x, [blink_res[dataset]["mlp"]["None"][0] for i in x], linestyle=':', marker=" ", color="red", label="$\epsilon=0$ (MLP)")
+        plt.plot(x, [blink_res[dataset]["mlp"]["None"][0]*100 for i in x], linestyle=':', marker=" ", color="red", label="$\epsilon=0$ (MLP)")
 
-        plot(x, [blink_res[dataset][model][i][0] for i in x], [blink_res[dataset][model][i][1] for i in x], color="blue", label="Blink (ours)", fill=False)
-        plot(x, [bl_res[dataset][model]["ldpgcn"][i][0] for i in x], [bl_res[dataset][model]["ldpgcn"][i][1] for i in x], color="orange", label="L-DPGCN", fill=False)
-        plot(x, [bl_res[dataset][model]["rr"][i][0] for i in x], [bl_res[dataset][model]["rr"][i][1] for i in x], color="c", label="RR", fill=False)
+        plot(x, [blink_res[dataset][model][i][0]*100 for i in x], [blink_res[dataset][model][i][1]*100 for i in x], color="blue", label="Blink (ours)", fill=False)
+        plot(x, [bl_res[dataset][model]["ldpgcn"][i][0]*100 for i in x], [bl_res[dataset][model]["ldpgcn"][i][1]*100 for i in x], color="orange", label="L-DPGCN", linestyle="dashed", fill=False)
+        plot(x, [bl_res[dataset][model]["rr"][i][0]*100 for i in x], [bl_res[dataset][model]["rr"][i][1]*100 for i in x], color="c", label="RR",linestyle="dashed", fill=False)
 
         # plt.ylim(ymin=0.2, ymax=0.9)
-        if plt.gca().get_ylim()[0] > 0.6:
-            plt.ylim(ymin=0.6)
+        if plt.gca().get_ylim()[0] > 60:
+            plt.ylim(ymin=60)
         plt.xlabel("$\epsilon$")
         plt.ylabel("Accuracy (\%)")
 

@@ -1,5 +1,6 @@
 from data.citeseer import load_citeseer
 from data.cora import load_cora
+from data.facebook import load_facebook
 from data.lastfm import load_lastfm
 from data.pubmed import load_pubmed
 
@@ -12,3 +13,5 @@ def make_dataset(dataset_name, root):
         return load_lastfm(root)
     elif dataset_name == "citeseer":
         return load_citeseer(root)
+    elif dataset_name == "facebook":
+        return load_facebook(root)
