@@ -77,7 +77,7 @@ class Server:
         # self.est_edge_index = torch.bernoulli(pij).to_sparse().coalesce().indices()
 
     def fit(self, model, hparam, iter=200):
-        log = np.zeros((iter, 3))
+        log = np.zeros((iter, 5))
 
         # we train the model on GPU
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
