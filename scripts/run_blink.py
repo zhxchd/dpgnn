@@ -70,18 +70,18 @@ if grid_search:
 
     def grid_search(eps):
         logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Start grid search for hyperparameter tuning.")
-        min_val_loss = math.inf
+        max_val_f1 = -1
         best_hp = None
         
         hps = baseline_hparams if eps == None else hparams
 
         for hp in hps:
-            val_loss, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
-            if val_loss.mean() < min_val_loss:
-                min_val_loss = val_loss.mean()
+            val_f1, _, _ = run_blink(graph, linkless_graph, model_name, eps, hp, 5)
+            if val_f1.mean() > max_val_f1:
+                max_val_f1 = val_f1.mean()
                 best_hp = hp
 
-        logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Best hparam is: {best_hp} with validation loss {min_val_loss}")
+        logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Best hparam is: {best_hp} with validation F1 score {max_val_f1}")
         logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Saving best hp to output/best_hp.json")
         with open("output/best_hp.json") as f:
             best_hp_dict = json.load(f)
@@ -109,9 +109,10 @@ with open("output/best_hp.json", "r") as f:
 for eps in eps_list:
     hp = best_hp[dataset_name][model_name][str(eps)]
     logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Run with best hp found: {hp}.")
-    _, acc = run_blink(graph, linkless_graph, model_name, eps, hp, 30)
-    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Test accuracy is {acc.mean()} ({acc.std()}).")
-    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Saving training results to output/results.json")
+    _, test_acc, test_f1 = run_blink(graph, linkless_graph, model_name, eps, hp, 30)
+    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Test accuracy is {test_acc.mean()} ({test_acc.std()}).")
+    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Test F1 score is {test_f1.mean()} ({test_f1.std()}).")
+    logging.info(f"[{model_name} on {dataset_name} with eps={eps}] Saving results to output/results.json")
 
     with open("output/results.json") as f:
         acc_dict = json.load(f)
@@ -119,6 +120,8 @@ for eps in eps_list:
         acc_dict[dataset_name] = {}
     if model_name not in acc_dict[dataset_name]:
         acc_dict[dataset_name][model_name] = {}
-    acc_dict[dataset_name][model_name][str(eps)] = [acc.mean(), acc.std()]
+    acc_dict[dataset_name][model_name][str(eps)] = {}
+    acc_dict[dataset_name][model_name][str(eps)]["acc"] = [test_acc.mean(), test_acc.std()]
+    acc_dict[dataset_name][model_name][str(eps)]["f1"] = [test_f1.mean(), test_f1.std()]
     with open('output/results.json', 'w') as fp:
         json.dump(acc_dict, fp, indent=2)

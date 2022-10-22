@@ -2,6 +2,7 @@ import math
 import numpy as np
 import torch
 from models import make_model
+from torchmetrics.functional import f1_score
 
 class Server:
     def __init__(self, eps, delta, data) -> None:
@@ -104,7 +105,9 @@ class Server:
             model.eval()
             out = model(self.data.x, self.est_edge_index)
             loss = criterion(out[self.data.val_mask], self.data.y[self.data.val_mask])
-            return float(loss)
+            pred = out.argmax(dim=1)
+            f1 = f1_score(pred[self.data.val_mask], self.data.y[self.data.val_mask], num_classes=self.data.num_classes)
+            return float(loss), float(f1)
         
         def test():
             model.eval()
@@ -112,12 +115,15 @@ class Server:
             pred = out.argmax(dim=1)  # Use the class with highest probability.
             test_correct = pred[self.data.test_mask] == self.data.y[self.data.test_mask]
             test_acc = int(test_correct.sum()) / int(self.data.test_mask.sum())
-            return test_acc
+            f1 = f1_score(pred[self.data.test_mask], self.data.y[self.data.test_mask], num_classes=self.data.num_classes)
+            return test_acc, float(f1)
         
         for epoch in range(1, iter+1):
-            loss = train()
-            val_loss = validate()
-            test_acc = test()
-            log[epoch-1] = [loss, val_loss, test_acc]
+            train_loss = train()
+            val_loss, val_f1 = validate()
+            test_acc, test_f1 = test()
+            log[epoch-1] = [train_loss, val_loss, val_f1, test_acc, test_f1]
         
+        # return numpy array of iter rows,
+        # each row is (train loss, validation loss, validation f1 score, test accuracy and test f1 score)
         return log

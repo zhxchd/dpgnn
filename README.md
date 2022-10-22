@@ -4,11 +4,12 @@ This repository hosts the code and documents for my project on GNN with link loc
 
 ## Dependencies
 
-To run the experiments in this repo, you need `numpy`, `matplotlib`, `sklearn`, `torch`, `torch_sparse`, `torch_geometric`. You can install all the dependencies is through `conda` (please use the `CUDA` version applicable to your system):
+To run the experiments in this repo, you need `numpy`, `matplotlib`, `sklearn`, `torch`, `torchmetrics`, `torch_sparse`, `torch_geometric`. You can install all the dependencies is through `conda` (please use the `CUDA` version applicable to your system):
 
 ```
 conda install -y pytorch cudatoolkit=11.6 -c pytorch -c conda-forge
 conda install -y pyg -c pyg
+conda install -y -c conda-forge torchmetrics
 ```
 
 ## File structure

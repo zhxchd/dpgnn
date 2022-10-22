@@ -2,15 +2,18 @@ import numpy as np
 import blink
 
 def run_blink(graph, linkless_graph, model_name, eps, hp, num_trials):
-    val_loss = np.zeros(num_trials)
+    val_f1 = np.zeros(num_trials)
     test_acc = np.zeros(num_trials)
+    test_f1 = np.zeros(num_trials)
     # non private, there's no client
     if eps == None:
         for i in range(num_trials):
             server = blink.Server(None, None, graph)
-            log = server.fit(model_name, hparam=hp)
-            val_loss[i] = log[:,1].min()
-            test_acc[i] = log[np.argmin(log[:,1]),2]
+            log = server.fit(model_name, hparam=hp) # [train_loss, val_loss, val_f1, test_acc, test_f1]
+            step = np.argmin(log[:,1]) # early stopping at lowest validation loss
+            val_f1[i] = log[step,2]
+            test_acc[i] = log[step,3]
+            test_f1[i] = log[step,4]
     # link LDP with blink
     else:
         for i in range(num_trials):
@@ -21,6 +24,8 @@ def run_blink(graph, linkless_graph, model_name, eps, hp, num_trials):
             server.receive(priv_adj, priv_deg)
             server.estimate()
             log = server.fit(model_name, hparam=hp)
-            val_loss[i] = log[:,1].min()
-            test_acc[i] = log[np.argmin(log[:,1])][2]
-    return val_loss, test_acc
+            step = np.argmin(log[:,1]) # early stopping at lowest validation loss
+            val_f1[i] = log[step,2]
+            test_acc[i] = log[step,3]
+            test_f1[i] = log[step,4]
+    return val_f1, test_acc, test_f1 # validation f1 is used in grid search for model selection
