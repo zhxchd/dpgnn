@@ -1,0 +1,10 @@
+2022-10-22 08:48:54 INFO     Start experiments with Namespace(dataset='lastfm', model='mlp', grid_search=True, eps=None)
+2022-10-22 08:49:04 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-22 08:49:04 INFO     [mlp on lastfm with eps=None] Start grid search for hyperparameter tuning.
+2022-10-22 08:50:30 INFO     [mlp on lastfm with eps=None] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation loss 1.0544246435165405
+2022-10-22 08:50:30 INFO     [mlp on lastfm with eps=None] Saving best hp to output/best_hp.json
+2022-10-22 08:50:30 INFO     Grid search done!
+2022-10-22 08:50:30 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-22 08:50:30 INFO     [mlp on lastfm with eps=None] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-22 08:50:49 INFO     [mlp on lastfm with eps=None] Test accuracy is 0.7010318293109479 (0.010029162697726728).
+2022-10-22 08:50:49 INFO     [mlp on lastfm with eps=None] Saving training results to output/results.json
