@@ -21,7 +21,7 @@ class Client():
     def AddLDP(self) -> Tuple[torch.Tensor, torch.Tensor]:
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         n = self.data.num_nodes
-        adj = SparseTensor(row=self.data.edge_index[0], col=self.data.edge_index[1], sparse_sizes=(n, n)).to(device).to_dense()
+        adj = SparseTensor(row=self.data.edge_index[0], col=self.data.edge_index[1], sparse_sizes=(n, n)).to_dense().to(device)
         deg = adj.sum(1).reshape(n, 1)
 
         def rr_adj() -> torch.Tensor:

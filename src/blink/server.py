@@ -70,7 +70,7 @@ class Server:
         # self.est_edge_value = weighted_edges.values()
 
         # hard threshold of 0.5
-        self.est_edge_index = (pij > 0.5).float().to_sparse().coalesce().indices()
+        self.est_edge_index = (pij >= 0.5).float().to_sparse().coalesce().indices()
         ones_1xn = None # reset variable so that it's no longer used and VRAM can be freed
         ones_nx1 = None
         # take random graph based on pij
