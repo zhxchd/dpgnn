@@ -106,14 +106,14 @@ class Server:
             out = model(self.data.x, self.est_edge_index)
             loss = criterion(out[self.data.val_mask], self.data.y[self.data.val_mask])
             pred = out.argmax(dim=1)
-            f1 = multiclass_f1_score(pred[self.data.val_mask], self.data.y[self.data.val_mask], num_classes=self.data.num_classes)
+            f1 = multiclass_f1_score(pred[self.data.val_mask], self.data.y[self.data.val_mask], num_classes=self.data.num_classes, average="micro")
             return float(loss), float(f1)
         
         def test():
             model.eval()
             out = model(self.data.x, self.est_edge_index)
             pred = out.argmax(dim=1)  # Use the class with highest probability.
-            f1 = multiclass_f1_score(pred[self.data.test_mask], self.data.y[self.data.test_mask], num_classes=self.data.num_classes)
+            f1 = multiclass_f1_score(pred[self.data.test_mask], self.data.y[self.data.test_mask], num_classes=self.data.num_classes, average="micro")
             return float(f1)
         
         for epoch in range(1, iter+1):
