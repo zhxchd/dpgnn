@@ -1,0 +1,12 @@
+2022-10-23 20:22:22 INFO     Start experiments with Namespace(dataset='cora', model='mlp', grid_search=True, eps=None)
+2022-10-23 20:22:28 INFO     Using device: cuda
+2022-10-23 20:22:28 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-23 20:22:28 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-23 20:22:28 INFO     [mlp on cora with eps=None] Start grid search for hyperparameter tuning.
+2022-10-23 20:24:31 INFO     [mlp on cora with eps=None] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001} with validation F1 score 0.7654357552528381
+2022-10-23 20:24:31 INFO     [mlp on cora with eps=None] Saving best hp to output/best_hp.json
+2022-10-23 20:24:31 INFO     Grid search done!
+2022-10-23 20:24:31 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-23 20:24:31 INFO     [mlp on cora with eps=None] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001}.
+2022-10-23 20:24:58 INFO     [mlp on cora with eps=None] Test F1 score is 0.7138847827911377 (0.0059348259013570406).
+2022-10-23 20:24:58 INFO     [mlp on cora with eps=None] Saving results to output/results.json

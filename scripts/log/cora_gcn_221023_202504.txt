@@ -1,0 +1,60 @@
+2022-10-23 20:25:04 INFO     Start experiments with Namespace(dataset='cora', model='gcn', grid_search=True, eps=None)
+2022-10-23 20:25:04 INFO     Using device: cuda
+2022-10-23 20:25:04 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-23 20:25:04 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-23 20:25:04 INFO     [gcn on cora with eps=1] Start grid search for hyperparameter tuning.
+2022-10-23 20:47:26 INFO     [gcn on cora with eps=1] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.7} with validation F1 score 0.7636632204055787
+2022-10-23 20:47:26 INFO     [gcn on cora with eps=1] Saving best hp to output/best_hp.json
+2022-10-23 20:47:26 INFO     [gcn on cora with eps=2] Start grid search for hyperparameter tuning.
+2022-10-23 21:09:42 INFO     [gcn on cora with eps=2] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9} with validation F1 score 0.7654357433319092
+2022-10-23 21:09:42 INFO     [gcn on cora with eps=2] Saving best hp to output/best_hp.json
+2022-10-23 21:09:42 INFO     [gcn on cora with eps=3] Start grid search for hyperparameter tuning.
+2022-10-23 21:31:48 INFO     [gcn on cora with eps=3] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9} with validation F1 score 0.7651403188705445
+2022-10-23 21:31:48 INFO     [gcn on cora with eps=3] Saving best hp to output/best_hp.json
+2022-10-23 21:31:48 INFO     [gcn on cora with eps=4] Start grid search for hyperparameter tuning.
+2022-10-23 21:53:52 INFO     [gcn on cora with eps=4] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.7917282104492187
+2022-10-23 21:53:52 INFO     [gcn on cora with eps=4] Saving best hp to output/best_hp.json
+2022-10-23 21:53:52 INFO     [gcn on cora with eps=5] Start grid search for hyperparameter tuning.
+2022-10-23 22:16:41 INFO     [gcn on cora with eps=5] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8437222957611084
+2022-10-23 22:16:41 INFO     [gcn on cora with eps=5] Saving best hp to output/best_hp.json
+2022-10-23 22:16:41 INFO     [gcn on cora with eps=6] Start grid search for hyperparameter tuning.
+2022-10-23 22:40:08 INFO     [gcn on cora with eps=6] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8531757831573487
+2022-10-23 22:40:08 INFO     [gcn on cora with eps=6] Saving best hp to output/best_hp.json
+2022-10-23 22:40:08 INFO     [gcn on cora with eps=7] Start grid search for hyperparameter tuning.
+2022-10-23 23:02:33 INFO     [gcn on cora with eps=7] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.857607078552246
+2022-10-23 23:02:33 INFO     [gcn on cora with eps=7] Saving best hp to output/best_hp.json
+2022-10-23 23:02:33 INFO     [gcn on cora with eps=8] Start grid search for hyperparameter tuning.
+2022-10-23 23:25:57 INFO     [gcn on cora with eps=8] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8581979274749756
+2022-10-23 23:25:57 INFO     [gcn on cora with eps=8] Saving best hp to output/best_hp.json
+2022-10-23 23:25:57 INFO     [gcn on cora with eps=None] Start grid search for hyperparameter tuning.
+2022-10-23 23:30:24 INFO     [gcn on cora with eps=None] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001} with validation F1 score 0.8546528697013855
+2022-10-23 23:30:24 INFO     [gcn on cora with eps=None] Saving best hp to output/best_hp.json
+2022-10-23 23:30:24 INFO     Grid search done!
+2022-10-23 23:30:24 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-23 23:30:24 INFO     [gcn on cora with eps=1] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.7}.
+2022-10-23 23:31:28 INFO     [gcn on cora with eps=1] Test F1 score is 0.7109798093636831 (0.008209420831427488).
+2022-10-23 23:31:28 INFO     [gcn on cora with eps=1] Saving results to output/results.json
+2022-10-23 23:31:28 INFO     [gcn on cora with eps=2] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9}.
+2022-10-23 23:32:30 INFO     [gcn on cora with eps=2] Test F1 score is 0.7111767629782358 (0.006925438504394021).
+2022-10-23 23:32:30 INFO     [gcn on cora with eps=2] Saving results to output/results.json
+2022-10-23 23:32:30 INFO     [gcn on cora with eps=3] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9}.
+2022-10-23 23:33:32 INFO     [gcn on cora with eps=3] Test F1 score is 0.7105859140555064 (0.007889584754804621).
+2022-10-23 23:33:32 INFO     [gcn on cora with eps=3] Saving results to output/results.json
+2022-10-23 23:33:32 INFO     [gcn on cora with eps=4] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-23 23:34:36 INFO     [gcn on cora with eps=4] Test F1 score is 0.7626784841219584 (0.014292256868510678).
+2022-10-23 23:34:36 INFO     [gcn on cora with eps=4] Saving results to output/results.json
+2022-10-23 23:34:36 INFO     [gcn on cora with eps=5] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-23 23:35:36 INFO     [gcn on cora with eps=5] Test F1 score is 0.852141801516215 (0.007279890892456336).
+2022-10-23 23:35:36 INFO     [gcn on cora with eps=5] Saving results to output/results.json
+2022-10-23 23:35:36 INFO     [gcn on cora with eps=6] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-23 23:36:35 INFO     [gcn on cora with eps=6] Test F1 score is 0.8640078763167064 (0.0047777490495429205).
+2022-10-23 23:36:35 INFO     [gcn on cora with eps=6] Saving results to output/results.json
+2022-10-23 23:36:35 INFO     [gcn on cora with eps=7] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-23 23:37:34 INFO     [gcn on cora with eps=7] Test F1 score is 0.867503692706426 (0.0060561287209533535).
+2022-10-23 23:37:34 INFO     [gcn on cora with eps=7] Saving results to output/results.json
+2022-10-23 23:37:34 INFO     [gcn on cora with eps=8] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-23 23:38:33 INFO     [gcn on cora with eps=8] Test F1 score is 0.865632688999176 (0.0074393220528916745).
+2022-10-23 23:38:33 INFO     [gcn on cora with eps=8] Saving results to output/results.json
+2022-10-23 23:38:33 INFO     [gcn on cora with eps=None] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-23 23:39:29 INFO     [gcn on cora with eps=None] Test F1 score is 0.8676021695137024 (0.004861500484415458).
+2022-10-23 23:39:29 INFO     [gcn on cora with eps=None] Saving results to output/results.json

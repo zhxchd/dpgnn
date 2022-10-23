@@ -1,0 +1,60 @@
+2022-10-23 23:39:35 INFO     Start experiments with Namespace(dataset='cora', model='graphsage', grid_search=True, eps=None)
+2022-10-23 23:39:35 INFO     Using device: cuda
+2022-10-23 23:39:35 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-23 23:39:35 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-23 23:39:35 INFO     [graphsage on cora with eps=1] Start grid search for hyperparameter tuning.
+2022-10-23 23:57:41 INFO     [graphsage on cora with eps=1] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.7} with validation F1 score 0.7701624870300293
+2022-10-23 23:57:41 INFO     [graphsage on cora with eps=1] Saving best hp to output/best_hp.json
+2022-10-23 23:57:41 INFO     [graphsage on cora with eps=2] Start grid search for hyperparameter tuning.
+2022-10-24 00:15:42 INFO     [graphsage on cora with eps=2] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9} with validation F1 score 0.7654357433319092
+2022-10-24 00:15:42 INFO     [graphsage on cora with eps=2] Saving best hp to output/best_hp.json
+2022-10-24 00:15:42 INFO     [graphsage on cora with eps=3] Start grid search for hyperparameter tuning.
+2022-10-24 00:33:53 INFO     [graphsage on cora with eps=3] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.7657311677932739
+2022-10-24 00:33:53 INFO     [graphsage on cora with eps=3] Saving best hp to output/best_hp.json
+2022-10-24 00:33:53 INFO     [graphsage on cora with eps=4] Start grid search for hyperparameter tuning.
+2022-10-24 00:52:31 INFO     [graphsage on cora with eps=4] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.805022144317627
+2022-10-24 00:52:31 INFO     [graphsage on cora with eps=4] Saving best hp to output/best_hp.json
+2022-10-24 00:52:31 INFO     [graphsage on cora with eps=5] Start grid search for hyperparameter tuning.
+2022-10-24 01:10:50 INFO     [graphsage on cora with eps=5] Best hparam is: {'do': 0.001, 'lr': 0.01, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.8481536149978638
+2022-10-24 01:10:50 INFO     [graphsage on cora with eps=5] Saving best hp to output/best_hp.json
+2022-10-24 01:10:50 INFO     [graphsage on cora with eps=6] Start grid search for hyperparameter tuning.
+2022-10-24 01:29:07 INFO     [graphsage on cora with eps=6] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.8623338222503663
+2022-10-24 01:29:07 INFO     [graphsage on cora with eps=6] Saving best hp to output/best_hp.json
+2022-10-24 01:29:07 INFO     [graphsage on cora with eps=7] Start grid search for hyperparameter tuning.
+2022-10-24 01:47:40 INFO     [graphsage on cora with eps=7] Best hparam is: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8641063451766968
+2022-10-24 01:47:40 INFO     [graphsage on cora with eps=7] Saving best hp to output/best_hp.json
+2022-10-24 01:47:40 INFO     [graphsage on cora with eps=8] Start grid search for hyperparameter tuning.
+2022-10-24 02:06:53 INFO     [graphsage on cora with eps=8] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.8667651295661927
+2022-10-24 02:06:53 INFO     [graphsage on cora with eps=8] Saving best hp to output/best_hp.json
+2022-10-24 02:06:53 INFO     [graphsage on cora with eps=None] Start grid search for hyperparameter tuning.
+2022-10-24 02:10:29 INFO     [graphsage on cora with eps=None] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.001} with validation F1 score 0.8644017815589905
+2022-10-24 02:10:29 INFO     [graphsage on cora with eps=None] Saving best hp to output/best_hp.json
+2022-10-24 02:10:29 INFO     Grid search done!
+2022-10-24 02:10:29 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-24 02:10:29 INFO     [graphsage on cora with eps=1] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.7}.
+2022-10-24 02:11:20 INFO     [graphsage on cora with eps=1] Test F1 score is 0.7126046240329742 (0.007933239907382749).
+2022-10-24 02:11:20 INFO     [graphsage on cora with eps=1] Saving results to output/results.json
+2022-10-24 02:11:20 INFO     [graphsage on cora with eps=2] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.9}.
+2022-10-24 02:12:12 INFO     [graphsage on cora with eps=2] Test F1 score is 0.7107336242993673 (0.005160479578342137).
+2022-10-24 02:12:12 INFO     [graphsage on cora with eps=2] Saving results to output/results.json
+2022-10-24 02:12:12 INFO     [graphsage on cora with eps=3] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 02:12:59 INFO     [graphsage on cora with eps=3] Test F1 score is 0.716001973549525 (0.01028990751716202).
+2022-10-24 02:12:59 INFO     [graphsage on cora with eps=3] Saving results to output/results.json
+2022-10-24 02:12:59 INFO     [graphsage on cora with eps=4] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 02:13:50 INFO     [graphsage on cora with eps=4] Test F1 score is 0.771196452776591 (0.00958297871488355).
+2022-10-24 02:13:50 INFO     [graphsage on cora with eps=4] Saving results to output/results.json
+2022-10-24 02:13:50 INFO     [graphsage on cora with eps=5] Run with best hp found: {'do': 0.001, 'lr': 0.01, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 02:14:42 INFO     [graphsage on cora with eps=5] Test F1 score is 0.8385032037893931 (0.008262401705717707).
+2022-10-24 02:14:42 INFO     [graphsage on cora with eps=5] Saving results to output/results.json
+2022-10-24 02:14:42 INFO     [graphsage on cora with eps=6] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 02:15:34 INFO     [graphsage on cora with eps=6] Test F1 score is 0.8624322990576426 (0.0039769214701292745).
+2022-10-24 02:15:34 INFO     [graphsage on cora with eps=6] Saving results to output/results.json
+2022-10-24 02:15:34 INFO     [graphsage on cora with eps=7] Run with best hp found: {'do': 0.001, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 02:16:26 INFO     [graphsage on cora with eps=7] Test F1 score is 0.8633677979310354 (0.004729044521621101).
+2022-10-24 02:16:26 INFO     [graphsage on cora with eps=7] Saving results to output/results.json
+2022-10-24 02:16:26 INFO     [graphsage on cora with eps=8] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 02:17:14 INFO     [graphsage on cora with eps=8] Test F1 score is 0.866863610347112 (0.003976925356630497).
+2022-10-24 02:17:14 INFO     [graphsage on cora with eps=8] Saving results to output/results.json
+2022-10-24 02:17:14 INFO     [graphsage on cora with eps=None] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.001}.
+2022-10-24 02:17:58 INFO     [graphsage on cora with eps=None] Test F1 score is 0.8667159040768941 (0.0024326153831462707).
+2022-10-24 02:17:58 INFO     [graphsage on cora with eps=None] Saving results to output/results.json
