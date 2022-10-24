@@ -1,0 +1,12 @@
+2022-10-24 06:40:37 INFO     Start experiments with Namespace(dataset='citeseer', model='mlp', grid_search=True, eps=None)
+2022-10-24 06:40:45 INFO     Using device: cuda
+2022-10-24 06:40:45 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-24 06:40:45 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-24 06:40:45 INFO     [mlp on citeseer with eps=None] Start grid search for hyperparameter tuning.
+2022-10-24 06:42:43 INFO     [mlp on citeseer with eps=None] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001} with validation F1 score 0.7230769276618958
+2022-10-24 06:42:43 INFO     [mlp on citeseer with eps=None] Saving best hp to output/best_hp.json
+2022-10-24 06:42:43 INFO     Grid search done!
+2022-10-24 06:42:43 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-24 06:42:43 INFO     [mlp on citeseer with eps=None] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001}.
+2022-10-24 06:43:09 INFO     [mlp on citeseer with eps=None] Test F1 score is 0.7386217971642812 (0.007074919280595871).
+2022-10-24 06:43:09 INFO     [mlp on citeseer with eps=None] Saving results to output/results.json

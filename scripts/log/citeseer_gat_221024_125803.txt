@@ -1,0 +1,60 @@
+2022-10-24 12:58:03 INFO     Start experiments with Namespace(dataset='citeseer', model='gat', grid_search=True, eps=None)
+2022-10-24 12:58:04 INFO     Using device: cuda
+2022-10-24 12:58:04 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-24 12:58:04 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-24 12:58:04 INFO     [gat on citeseer with eps=1] Start grid search for hyperparameter tuning.
+2022-10-24 13:29:57 INFO     [gat on citeseer with eps=1] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.5} with validation F1 score 0.7211538553237915
+2022-10-24 13:29:57 INFO     [gat on citeseer with eps=1] Saving best hp to output/best_hp.json
+2022-10-24 13:29:57 INFO     [gat on citeseer with eps=2] Start grid search for hyperparameter tuning.
+2022-10-24 14:01:08 INFO     [gat on citeseer with eps=2] Best hparam is: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.5} with validation F1 score 0.721875011920929
+2022-10-24 14:01:08 INFO     [gat on citeseer with eps=2] Saving best hp to output/best_hp.json
+2022-10-24 14:01:08 INFO     [gat on citeseer with eps=3] Start grid search for hyperparameter tuning.
+2022-10-24 14:31:40 INFO     [gat on citeseer with eps=3] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.9} with validation F1 score 0.720432698726654
+2022-10-24 14:31:40 INFO     [gat on citeseer with eps=3] Saving best hp to output/best_hp.json
+2022-10-24 14:31:40 INFO     [gat on citeseer with eps=4] Start grid search for hyperparameter tuning.
+2022-10-24 15:02:11 INFO     [gat on citeseer with eps=4] Best hparam is: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.9} with validation F1 score 0.7221153974533081
+2022-10-24 15:02:11 INFO     [gat on citeseer with eps=4] Saving best hp to output/best_hp.json
+2022-10-24 15:02:11 INFO     [gat on citeseer with eps=5] Start grid search for hyperparameter tuning.
+2022-10-24 15:32:49 INFO     [gat on citeseer with eps=5] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.7213942289352417
+2022-10-24 15:32:49 INFO     [gat on citeseer with eps=5] Saving best hp to output/best_hp.json
+2022-10-24 15:32:49 INFO     [gat on citeseer with eps=6] Start grid search for hyperparameter tuning.
+2022-10-24 16:04:26 INFO     [gat on citeseer with eps=6] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.7514423131942749
+2022-10-24 16:04:26 INFO     [gat on citeseer with eps=6] Saving best hp to output/best_hp.json
+2022-10-24 16:04:26 INFO     [gat on citeseer with eps=7] Start grid search for hyperparameter tuning.
+2022-10-24 16:34:41 INFO     [gat on citeseer with eps=7] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.7533653974533081
+2022-10-24 16:34:41 INFO     [gat on citeseer with eps=7] Saving best hp to output/best_hp.json
+2022-10-24 16:34:41 INFO     [gat on citeseer with eps=8] Start grid search for hyperparameter tuning.
+2022-10-24 17:05:06 INFO     [gat on citeseer with eps=8] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1} with validation F1 score 0.7572115421295166
+2022-10-24 17:05:06 INFO     [gat on citeseer with eps=8] Saving best hp to output/best_hp.json
+2022-10-24 17:05:06 INFO     [gat on citeseer with eps=None] Start grid search for hyperparameter tuning.
+2022-10-24 17:10:44 INFO     [gat on citeseer with eps=None] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.001} with validation F1 score 0.754567313194275
+2022-10-24 17:10:44 INFO     [gat on citeseer with eps=None] Saving best hp to output/best_hp.json
+2022-10-24 17:10:44 INFO     Grid search done!
+2022-10-24 17:10:44 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-24 17:10:44 INFO     [gat on citeseer with eps=1] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.5}.
+2022-10-24 17:12:06 INFO     [gat on citeseer with eps=1] Test F1 score is 0.7356971184412638 (0.0034606293339875843).
+2022-10-24 17:12:06 INFO     [gat on citeseer with eps=1] Saving results to output/results.json
+2022-10-24 17:12:06 INFO     [gat on citeseer with eps=2] Run with best hp found: {'do': 0.01, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.5}.
+2022-10-24 17:13:28 INFO     [gat on citeseer with eps=2] Test F1 score is 0.7334535241127014 (0.003601546702003156).
+2022-10-24 17:13:28 INFO     [gat on citeseer with eps=2] Saving results to output/results.json
+2022-10-24 17:13:28 INFO     [gat on citeseer with eps=3] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.9}.
+2022-10-24 17:14:52 INFO     [gat on citeseer with eps=3] Test F1 score is 0.7391025642553966 (0.005284209705505344).
+2022-10-24 17:14:52 INFO     [gat on citeseer with eps=3] Saving results to output/results.json
+2022-10-24 17:14:52 INFO     [gat on citeseer with eps=4] Run with best hp found: {'do': 0.1, 'lr': 0.01, 'wd': 0.0001, 'delta': 0.9}.
+2022-10-24 17:16:14 INFO     [gat on citeseer with eps=4] Test F1 score is 0.7389823794364929 (0.004411596397591557).
+2022-10-24 17:16:14 INFO     [gat on citeseer with eps=4] Saving results to output/results.json
+2022-10-24 17:16:14 INFO     [gat on citeseer with eps=5] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 17:17:34 INFO     [gat on citeseer with eps=5] Test F1 score is 0.7356570521990459 (0.010718626705960832).
+2022-10-24 17:17:34 INFO     [gat on citeseer with eps=5] Saving results to output/results.json
+2022-10-24 17:17:34 INFO     [gat on citeseer with eps=6] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 17:18:56 INFO     [gat on citeseer with eps=6] Test F1 score is 0.7595352550347646 (0.008315204622573931).
+2022-10-24 17:18:56 INFO     [gat on citeseer with eps=6] Saving results to output/results.json
+2022-10-24 17:18:56 INFO     [gat on citeseer with eps=7] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 17:20:18 INFO     [gat on citeseer with eps=7] Test F1 score is 0.7655849357446035 (0.008231099700954567).
+2022-10-24 17:20:18 INFO     [gat on citeseer with eps=7] Saving results to output/results.json
+2022-10-24 17:20:18 INFO     [gat on citeseer with eps=8] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001, 'delta': 0.1}.
+2022-10-24 17:21:37 INFO     [gat on citeseer with eps=8] Test F1 score is 0.7689102590084076 (0.007695642003984816).
+2022-10-24 17:21:37 INFO     [gat on citeseer with eps=8] Saving results to output/results.json
+2022-10-24 17:21:37 INFO     [gat on citeseer with eps=None] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.001}.
+2022-10-24 17:22:52 INFO     [gat on citeseer with eps=None] Test F1 score is 0.7695913473765056 (0.006800166633768873).
+2022-10-24 17:22:52 INFO     [gat on citeseer with eps=None] Saving results to output/results.json
