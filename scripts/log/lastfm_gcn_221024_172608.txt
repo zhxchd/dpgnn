@@ -1,0 +1,60 @@
+2022-10-24 17:26:08 INFO     Start experiments with Namespace(dataset='lastfm', model='gcn', grid_search=True, eps=None)
+2022-10-24 17:26:09 INFO     Using device: cuda
+2022-10-24 17:26:09 INFO     _CudaDeviceProperties(name='NVIDIA A100 80GB PCIe', major=8, minor=0, total_memory=81111MB, multi_processor_count=108)
+2022-10-24 17:26:09 INFO     Grid search. Load hyperparameter space from config.json
+2022-10-24 17:26:09 INFO     [gcn on lastfm with eps=1] Start grid search for hyperparameter tuning.
+2022-10-24 18:00:59 INFO     [gcn on lastfm with eps=1] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.7} with validation F1 score 0.6990556240081787
+2022-10-24 18:00:59 INFO     [gcn on lastfm with eps=1] Saving best hp to output/best_hp.json
+2022-10-24 18:00:59 INFO     [gcn on lastfm with eps=2] Start grid search for hyperparameter tuning.
+2022-10-24 18:34:31 INFO     [gcn on lastfm with eps=2] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.9} with validation F1 score 0.6969569802284241
+2022-10-24 18:34:31 INFO     [gcn on lastfm with eps=2] Saving best hp to output/best_hp.json
+2022-10-24 18:34:31 INFO     [gcn on lastfm with eps=3] Start grid search for hyperparameter tuning.
+2022-10-24 19:07:21 INFO     [gcn on lastfm with eps=3] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.5} with validation F1 score 0.6991605401039124
+2022-10-24 19:07:21 INFO     [gcn on lastfm with eps=3] Saving best hp to output/best_hp.json
+2022-10-24 19:07:21 INFO     [gcn on lastfm with eps=4] Start grid search for hyperparameter tuning.
+2022-10-24 19:39:37 INFO     [gcn on lastfm with eps=4] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.7256033539772033
+2022-10-24 19:39:37 INFO     [gcn on lastfm with eps=4] Saving best hp to output/best_hp.json
+2022-10-24 19:39:37 INFO     [gcn on lastfm with eps=5] Start grid search for hyperparameter tuning.
+2022-10-24 20:11:31 INFO     [gcn on lastfm with eps=5] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.7827911853790284
+2022-10-24 20:11:31 INFO     [gcn on lastfm with eps=5] Saving best hp to output/best_hp.json
+2022-10-24 20:11:31 INFO     [gcn on lastfm with eps=6] Start grid search for hyperparameter tuning.
+2022-10-24 20:43:05 INFO     [gcn on lastfm with eps=6] Best hparam is: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8130115509033203
+2022-10-24 20:43:05 INFO     [gcn on lastfm with eps=6] Saving best hp to output/best_hp.json
+2022-10-24 20:43:05 INFO     [gcn on lastfm with eps=7] Start grid search for hyperparameter tuning.
+2022-10-24 21:14:50 INFO     [gcn on lastfm with eps=7] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.816369354724884
+2022-10-24 21:14:50 INFO     [gcn on lastfm with eps=7] Saving best hp to output/best_hp.json
+2022-10-24 21:14:50 INFO     [gcn on lastfm with eps=8] Start grid search for hyperparameter tuning.
+2022-10-24 21:47:29 INFO     [gcn on lastfm with eps=8] Best hparam is: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1} with validation F1 score 0.8193074464797974
+2022-10-24 21:47:29 INFO     [gcn on lastfm with eps=8] Saving best hp to output/best_hp.json
+2022-10-24 21:47:29 INFO     [gcn on lastfm with eps=None] Start grid search for hyperparameter tuning.
+2022-10-24 21:52:04 INFO     [gcn on lastfm with eps=None] Best hparam is: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001} with validation F1 score 0.8193074464797974
+2022-10-24 21:52:04 INFO     [gcn on lastfm with eps=None] Saving best hp to output/best_hp.json
+2022-10-24 21:52:04 INFO     Grid search done!
+2022-10-24 21:52:04 INFO     Run experiments using found hyperparameters in best_hp.json.
+2022-10-24 21:52:04 INFO     [gcn on lastfm with eps=1] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.7}.
+2022-10-24 21:53:42 INFO     [gcn on lastfm with eps=1] Test F1 score is 0.7101084331671397 (0.0059631847853193025).
+2022-10-24 21:53:42 INFO     [gcn on lastfm with eps=1] Saving results to output/results.json
+2022-10-24 21:53:42 INFO     [gcn on lastfm with eps=2] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.9}.
+2022-10-24 21:55:19 INFO     [gcn on lastfm with eps=2] Test F1 score is 0.7017488598823547 (0.011295600293119459).
+2022-10-24 21:55:19 INFO     [gcn on lastfm with eps=2] Saving results to output/results.json
+2022-10-24 21:55:19 INFO     [gcn on lastfm with eps=3] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.5}.
+2022-10-24 21:56:46 INFO     [gcn on lastfm with eps=3] Test F1 score is 0.703777547677358 (0.00773060956129573).
+2022-10-24 21:56:46 INFO     [gcn on lastfm with eps=3] Saving results to output/results.json
+2022-10-24 21:56:46 INFO     [gcn on lastfm with eps=4] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 21:58:10 INFO     [gcn on lastfm with eps=4] Test F1 score is 0.7370933870474498 (0.007496509178774036).
+2022-10-24 21:58:10 INFO     [gcn on lastfm with eps=4] Saving results to output/results.json
+2022-10-24 21:58:10 INFO     [gcn on lastfm with eps=5] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 21:59:35 INFO     [gcn on lastfm with eps=5] Test F1 score is 0.7818642834822337 (0.013956114031854712).
+2022-10-24 21:59:35 INFO     [gcn on lastfm with eps=5] Saving results to output/results.json
+2022-10-24 21:59:35 INFO     [gcn on lastfm with eps=6] Run with best hp found: {'do': 0.01, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 22:01:01 INFO     [gcn on lastfm with eps=6] Test F1 score is 0.8214760462443034 (0.007475154831320886).
+2022-10-24 22:01:01 INFO     [gcn on lastfm with eps=6] Saving results to output/results.json
+2022-10-24 22:01:01 INFO     [gcn on lastfm with eps=7] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 22:02:25 INFO     [gcn on lastfm with eps=7] Test F1 score is 0.8275620838006338 (0.007968752517317157).
+2022-10-24 22:02:25 INFO     [gcn on lastfm with eps=7] Saving results to output/results.json
+2022-10-24 22:02:25 INFO     [gcn on lastfm with eps=8] Run with best hp found: {'do': 0.1, 'lr': 0.1, 'wd': 0.0001, 'delta': 0.1}.
+2022-10-24 22:03:50 INFO     [gcn on lastfm with eps=8] Test F1 score is 0.8279293517271678 (0.008386322992695592).
+2022-10-24 22:03:50 INFO     [gcn on lastfm with eps=8] Saving results to output/results.json
+2022-10-24 22:03:50 INFO     [gcn on lastfm with eps=None] Run with best hp found: {'do': 0.001, 'lr': 0.1, 'wd': 0.0001}.
+2022-10-24 22:04:49 INFO     [gcn on lastfm with eps=None] Test F1 score is 0.8343826512495677 (0.005774959829343556).
+2022-10-24 22:04:49 INFO     [gcn on lastfm with eps=None] Saving results to output/results.json
